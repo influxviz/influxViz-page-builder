@@ -23,8 +23,8 @@ var testpage1 = {
 			id: "testgauge2",
 			header: "room temp",
 			cells: 3,
-			classes: "",
-			html: "<div style=\"background:#222;color:#FFF; width:100%; height:100%\">test</div>",
+			classes: "gauge",
+			html: "<meta content=\"influxValue: temp; influxTimeSeries: temp-sensor; min: -60; max: 80; title: Room Temperature Celcius;\">",
 			js: ""
 		}]
 	}]
@@ -78,15 +78,16 @@ var Page = function(page) {
 			{
 				var widget = row.widgets[j];
 
-				var widgetWrapper = $("<div id=\"" + widget.id 
-					+ "\" class=\"col-md-" + widget.cells + " widget " + widget.classes 
-					+ "\" style=\"height: 100%;\">"
+				var widgetWrapper = $("<div \" class=\"col-md-" + widget.cells + " widget\""
+					+" style=\"height: 100%;\">"
 					+ "</div>");
 
 				var widgetHeader = $("<div class=\"widget-header\"><span>" + widget.header 
 					+ "</div></span>");
 				
-				var widgetContent = $("<div class=\"widget-content\">" + widget.html 
+				var widgetContent = $("<div id=\"" + widget.id 
+					+ "\" class=\"widget-content " + widget.classes
+					+"\">" + widget.html 
 					+ "</div>")
 				
 				widgetWrapper

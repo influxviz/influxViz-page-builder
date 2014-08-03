@@ -7,6 +7,8 @@
 		</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	  	<meta name="influxDBCredentials" content="databaseIP: 162.243.57.240; port: 8086; database: home-sensor-array; username: root; password: root;">
+		
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="assets/css/styles-default.css">
 	</head>
@@ -32,14 +34,22 @@
 		<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="assets/js/Blob.min.js"></script>
 		<script type="text/javascript" src="assets/js/FileSaver.min.js"></script>
-		<script type="text/javascript" src="assets/js/influx-dashboard.js"></script>
-		
+		<script type="text/javascript" src="assets/js/influx-dashboard.js"></script>	
+
 
 		<script type="text/javascript">
 			$(document).ready(function() {
 				var db = new InfluxDashboard("test dashboard",[testpage1, testpage2]);
 			});
 		</script>
+
+
+		<script type="text/javascript" src="assets/js/justGage.1.0.1/resources/js/raphael.2.1.0.min.js"></script>
+		<script type="text/javascript" src="assets/js/justGage.1.0.1/resources/js/justgage.1.0.1.min.js"></script>
+		<script type="text/javascript" src="assets/js/influxDBGauge.js"></script>
+		
+
+
 	</body>
 
 
