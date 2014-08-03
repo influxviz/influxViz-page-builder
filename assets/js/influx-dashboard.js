@@ -19,6 +19,13 @@ var testpage1 = {
 			classes: "",
 			html: "html code1",
 			js: ""
+		},{
+			id: "testgauge2",
+			header: "room temp",
+			cells: 3,
+			classes: "",
+			html: "<div style=\"background:#222;color:#FFF; width:100%; height:100%\">test</div>",
+			js: ""
 		}]
 	}]
 }
@@ -31,11 +38,18 @@ var testpage2 = {
 		height: 200,
 
 		widgets: [{
-			id: "testgauge2",
+			id: "testgauge3",
 			header: "room temp",
 			cells: 3,
 			classes: "",
 			html: "html code2",
+			js: ""
+		},{
+			id: "testgauge4",
+			header: "toast toastage",
+			cells: 4,
+			classes: "",
+			html: "html code and stuff",
 			js: ""
 		}]
 	}]
