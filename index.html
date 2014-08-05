@@ -35,18 +35,83 @@
 		<script type="text/javascript" src="assets/js/Blob.min.js"></script>
 		<script type="text/javascript" src="assets/js/FileSaver.min.js"></script>
 		<script type="text/javascript" src="assets/js/influx-dashboard.js"></script>	
-
+		<script type="text/javascript" src="assets/js/justGage.1.0.1/resources/js/raphael.2.1.0.min.js"></script>
+		<script type="text/javascript" src="assets/js/justGage.1.0.1/resources/js/justgage.1.0.1.min.js"></script>
+		<script type="text/javascript" src="assets/js/influxDBGaugeManager.js"></script>
 
 		<script type="text/javascript">
+			var checkSidebarRetract = function() {
+				if($(window).width() < 700)
+				{
+					$("#wrapper").css({"padding-left":"0"});
+				}
+				else
+				{
+					$("#wrapper").css({"padding-left":"250px"});
+				}
+			};
+			
+			var testpage1 = {
+					id: "test-page1",
+					title: "do fun shit1",
+
+					contents: [{
+						height: 400,
+
+						widgets: [{
+							id: "testgauge1",
+							header: "toast toastage",
+							cells: 4,
+							classes: "",
+							html: "html code1"
+						},{
+							id: "testgauge2",
+							header: "room temp",
+							cells: 3,
+							classes: "gauge",
+							html: "<meta content=\"influxValue: temp; influxTimeSeries: temp-sensor; min: -60; max: 80; title: Room Temperature Celcius;\">"
+						}]
+					}]
+				}
+
+				var testpage2 = {
+					id: "test-page2",
+					title: "do fun shit2",
+
+					contents: [{
+						height: 200,
+
+						widgets: [{
+							id: "testgauge3",
+							header: "room temp",
+							cells: 3,
+							classes: "",
+							html: "html code2"
+						},{
+							id: "testgauge4",
+							header: "toast toastage",
+							cells: 4,
+							classes: "",
+							html: "html code and stuff"
+						}]
+					}]
+				}
+
 			$(document).ready(function() {
+				checkSidebarRetract();
+				
+				$(window).resize(function(){
+					checkSidebarRetract();
+				});
+
+
 				var db = new InfluxDashboard("test dashboard",[testpage1, testpage2]);
+				var gaugeManager = new InfluxDBGaugeManager(2000);
+				
 			});
 		</script>
 
 
-		<script type="text/javascript" src="assets/js/justGage.1.0.1/resources/js/raphael.2.1.0.min.js"></script>
-		<script type="text/javascript" src="assets/js/justGage.1.0.1/resources/js/justgage.1.0.1.min.js"></script>
-		<script type="text/javascript" src="assets/js/influxDBGauge.js"></script>
 		
 
 
