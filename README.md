@@ -38,7 +38,7 @@ widget = {
 
 ```
 
-finally a dashboard instance needs in order to initialize and render the page.
+Finally a dashboard instance needs to be created in order to initialize and render the page.
 ```
 var db = new InfluxDashboard("test dashboard",[testpage1, testpage2]);
 ```
