@@ -10,6 +10,13 @@ When creating a dashboard object you pass in The title as text and an array of j
 
 Each page is formatted in the following way:
 ```
+dashBoard_Object_Data = {
+  title: "test dashboard",
+  pages: [page1, page2, page3...]
+}
+
+where page1, page2, page3... are objects formatted as
+
 page = {
   id: "page-id",
   title: "title of page",
@@ -33,14 +40,41 @@ widget = {
   header: "the text that will show up as the widgets name",
   cells: 4, //The number of bootstrap columns the widget takes up.
   classes: "class1 class2 class3", //CSS classes that will be appended.
-  html: "<div>html code that will be inserted into the content wrapper</div>",
+  task: {
+    html: "<div>html code that will be inserted into the content wrapper</div>",
+    js: {
+      selectors: {
+        d3: "d3.select(widgetPH)",
+        jquery: "$(widgetPH)",
+        DOM: "document.getElementById(widgetPH)"
+      },
+
+      functions: [function1, function2, ...]
+    }
+  }
 }
 
 ```
 
+where 'selectors' is an object that contains all the selectors 
+formatted as a string. 'widgetPH' is simply a placeholder that is 
+'String.replace'ed with the actual widget id when the page is loaded.
+
+The functions are of the form
+
+```
+function(arg){
+  arg.jquery.click(etc..);
+  arg.d3.append("svg")...;
+  arg.DOM.innerHTML = "text";
+}
+```
+The 'arg' argument will be the 'selectors' object containing all the selectors.
+The functions will all be called after the dashboard loads.
+
 Finally a dashboard instance needs to be created in order to initialize and render the page.
 ```
-var db = new InfluxDashboard("test dashboard",[testpage1, testpage2]);
+var db = new InfluxDashboard(dashBoard_Object_Data);
 ```
 
 TODO: 
