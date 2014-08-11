@@ -32,11 +32,14 @@
 		<!-- scripts -->
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 		<script type="text/javascript" src="assets/js/Blob.min.js"></script>
 		<script type="text/javascript" src="assets/js/FileSaver.min.js"></script>
-		<script type="text/javascript" src="assets/js/influx-dashboard.js"></script>	
 		<script type="text/javascript" src="assets/js/justGage.1.0.1/resources/js/raphael.2.1.0.min.js"></script>
 		<script type="text/javascript" src="assets/js/justGage.1.0.1/resources/js/justgage.1.0.1.min.js"></script>
+
+
+		<script type="text/javascript" src="assets/js/influx-dashboard.js"></script>	
 		<script type="text/javascript" src="assets/js/influxDBGaugeManager.js"></script>
 
 		<script type="text/javascript">
@@ -51,7 +54,9 @@
 				}
 			};
 			
-			var testpage1 = {
+			var testDashboard = {
+				title: "Title of dashbaord",
+				pages: [{
 					id: "test-page1",
 					title: "do fun shit1",
 
@@ -63,18 +68,42 @@
 							header: "toast toastage",
 							cells: 4,
 							classes: "",
-							html: "html code1"
+							task: {
+								html: "html code1",
+								js: {
+									selectors: {
+										d3: "d3.select(widgetPH)",
+										jquery: "$(widgetPH)",
+										DOM: "document.getElementById(widgetPH)"
+									},
+
+									functions: [function(e){
+										e.jquery.click(function(){
+											alert("HELLO");
+										})
+									}]
+								}
+							}
 						},{
 							id: "testgauge2",
 							header: "room temp",
 							cells: 3,
 							classes: "gauge",
-							html: "<meta content=\"influxValue: temp; influxTimeSeries: temp-sensor; min: -60; max: 80; title: Room Temperature Celcius;\">"
+							task: {
+								html: "<meta content=\"influxValue: temp; influxTimeSeries: temp-sensor; min: -60; max: 80; title: Room Temperature Celcius;\">",
+								js: {
+									selectors: {
+										d3: "d3.select(widgetPH)",
+										jquery: "$(widgetPH)",
+										DOM: "document.getElementById(widgetPH)"
+									},
+
+									functions: []
+								}
+							}
 						}]
 					}]
-				}
-
-				var testpage2 = {
+				},{
 					id: "test-page2",
 					title: "do fun shit2",
 
@@ -86,16 +115,39 @@
 							header: "room temp",
 							cells: 3,
 							classes: "",
-							html: "html code2"
+							task: {
+								html: "html code2",
+								js: {
+									selectors: {
+										d3: "d3.select(widgetPH)",
+										jquery: "$(widgetPH)",
+										DOM: "document.getElementById(widgetPH)"
+									},
+
+									functions: []
+								}
+							}
 						},{
 							id: "testgauge4",
 							header: "toast toastage",
 							cells: 4,
 							classes: "",
-							html: "html code and stuff"
+							task: {
+								html: "html code and stuff",
+								js: {
+									selectors: {
+										d3: "d3.select(widgetPH)",
+										jquery: "$(widgetPH)",
+										DOM: "document.getElementById(widgetPH)"
+									},
+
+									functions: []
+								}
+							}
 						}]
 					}]
-				}
+				}]
+			}
 
 			$(document).ready(function() {
 				checkSidebarRetract();
@@ -105,7 +157,7 @@
 				});
 
 
-				var db = new InfluxDashboard("test dashboard",[testpage1, testpage2]);
+				var db = new InfluxDashboard(testDashboard);
 				var gaugeManager = new InfluxDBGaugeManager(2000);
 				
 			});

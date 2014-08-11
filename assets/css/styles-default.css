@@ -69,9 +69,19 @@ body {
 	text-decoration: none;
 }
 
-.dashboard-page{
-	display: block;
+.page-header {
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+.page-header span{ 
+	font-family: courier;
+	font-size: 2em;
+	font-weight: bold;
+}
 
+.dashboard-page {
+	display: block;
 }
 
 .dashboard-page.hidden {
