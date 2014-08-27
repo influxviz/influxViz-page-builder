@@ -3,79 +3,103 @@ influxViz-page-builder
 
 The influxViz page builder is a client side javascript application that allows the user to easily construct dashboards with graphs and visuals.
 
-How to:
-=======
+How to use
+==========
 
-When creating a dashboard object you pass in The title as text and an array of json-formatted pages.
+Currently you can run a development version of the web application using 
 
-Each page is formatted in the following way:
 ```
-dashBoard_Object_Data = {
-  title: "test dashboard",
-  pages: [page1, page2, page3...]
-}
+grunt serve
+```
+As many of you can probably tell, this web application was made using the yeoman scaffolder
+and the angular generator.
 
-where page1, page2, page3... are objects formatted as
+This means you can also create a release version of this application using grunt dist.
 
-page = {
-  id: "page-id",
-  title: "title of page",
-  
-  contents: [row1, row2, row3...];
-}
+Once the web application is open in your browser you will have the option to load a dash board from
+an XML file. The testdash.xml file is a good example of what your file should look like.
+The application uses Twitter Bootstrap's grid cell system to position each widget in the dashboard.
 
-where row1, row2, row3... are objects formatted as
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<dashboard>
+	<page>
+		<row col-type="col-lg" >
+			<widget cell-width="1" >
+				<html><![CDATA[
+					<div>element1</div>
+					<div>element2</div>
+					<div>element3</div>
+					<div>element4</div>
+				]]></html>
+				<function><![CDATA[
+					function (e) {
+						console.log(e + "<lelele>");
+					}
+				]]></function>
+			</widget>
+		</row>
+	</page>
+</dashboard>
+```
 
-row = {
-  height: 400; //height in pixels of the row.
-  
-  widgets: [widget1, widget2, widget3...]
-}
-
-where widget1, widget2, widget3... are objects formatted as
-
-
-widget = {
-  id: "widget-content-wrapper-id"
-  header: "the text that will show up as the widgets name",
-  cells: 4, //The number of bootstrap columns the widget takes up.
-  classes: "class1 class2 class3", //CSS classes that will be appended.
-  task: {
-    html: "<div>html code that will be inserted into the content wrapper</div>",
-    js: {
-      selectors: {
-        d3: "d3.select(widgetPH)",
-        jquery: "$(widgetPH)",
-        DOM: "document.getElementById(widgetPH)"
-      },
-
-      functions: [function1, function2, ...]
-    }
-  }
-}
+All dashboards contain a dashboard tag
+```
+<dashboard>
+	...
+</dashboard>
 
 ```
 
-where 'selectors' is an object that contains all the selectors 
-formatted as a string. 'widgetPH' is simply a placeholder that is 
-'String.replace'ed with the actual widget id when the page is loaded.
-
-The functions are of the form
-
+Inside you may have some page tags
 ```
-function(arg){
-  arg.jquery.click(etc..);
-  arg.d3.append("svg")...;
-  arg.DOM.innerHTML = "text";
-}
-```
-The 'arg' argument will be the 'selectors' object containing all the selectors.
-The functions will all be called after the dashboard loads.
-
-Finally a dashboard instance needs to be created in order to initialize and render the page.
-```
-var db = new InfluxDashboard(dashBoard_Object_Data);
+<page>
+	...
+</page>
 ```
 
-TODO: 
-Add DOM, jquery, and d3 closure objects that will take their repsective selectors as input and apply the calls to their respective libraries.
+Inside each page tag you may have rows
+```
+<row col-type="col-lg">
+	...
+</row>
+```
+
+The col-type attribute is the type of bootstrap column you want to use inside
+in the current row for every column in the row.
+
+Inside each row you may also have widgets!
+```
+<widget cell-width="1">
+		<html><![CDATA[
+		<div>element1</div>
+		<div>element2</div>
+		<div>element3</div>
+		<div>element4</div>
+	]]></html>
+	<function><![CDATA[
+		function (e) {
+			console.log(e + "<lelele>");
+		}
+	]]></function>
+</widget>
+```
+
+The cell-width attribute is the column size of the widget. The widget's class inside the DOM
+will be the string 
+
+```
+widget.class = row.colType] + widget.cellWidth
+```
+
+Finally inside each widget tag where is the html tag and the function tag.
+
+The html tag can contain any html you want to show inside the widget.
+You may use bootstrap classes as well for it is included with the app.
+
+The function tag contains a single function that will be bound to the widget.
+This is where all your widgets functionality must go such as D3 calls and 
+jQuery manipulation. 
+
+Your function must take one argument. 
+This argument will have the widget's element object passed as a jquery object.

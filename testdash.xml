@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dashboard>
+	<page>
+		<row col-type="col-lg" >
+			<widget cell-width="1" >
+				<html><![CDATA[
+					<div>element1</div>
+					<div>element2</div>
+					<div>element3</div>
+					<div>element4</div>
+				]]></html>
+				<function><![CDATA[
+					function (e) {
+						console.log(e + "<lelele>");
+					}
+				]]></function>
+			</widget>
+		</row>
+	</page>
+</dashboard>

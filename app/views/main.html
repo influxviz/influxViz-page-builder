@@ -1,0 +1,78 @@
+<div class="dashboard-wrapper">
+  <div id="wrapper">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="navbar-header">
+        <span class="navbar-brand" style="cursor: pointer">Title:{{lele}}</span>
+      </div>
+
+      <ul class="nav top-nav">
+        <li>
+          <button type="button" class="navbar-toggle" ng-click="toggleSidebar()">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+        </li>
+      <ul>
+    </nav>
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <li>
+          <span class="menu-item" data-toggle="modal" data-target="#load-xml">
+            <span class="glyphicon glyphicon-floppy-open"></span>Load Dashboard
+          </span>
+        </li>
+        <li>
+          <span class="menu-item dash-save">
+            <span class="glyphicon glyphicon-floppy-save"></span>Save Dashboard
+          </span>
+          <hr/>
+        </li>
+
+        <li>
+          <span class="menu-item">Random page</span>
+        </li>
+
+      </ul>
+
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <div class="container-fluid dashboard">
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+
+
+</div>
+
+<div class="modal dialog-box fade" id="load-xml">
+  <div class="container">
+    <div class="row" style="padding-top: 20%;">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+        <div class="modal-content modal-sm">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title">Load Dashboard from XML</h4>
+          </div>
+          <form class="dash-load">
+            <div class="modal-body">
+              <p><input id="file-input" type="file" value="file"></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <input type="submit" class="btn btn-primary" value="Load Dashboard">
+            </div>
+          </form>
+        </div><!-- /.modal-content -->
+      </div>
+    </div>
+  </div>
+</div>
