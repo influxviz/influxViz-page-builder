@@ -14,7 +14,11 @@ grunt serve
 As many of you can probably tell, this web application was made using the yeoman scaffolder
 and the angular generator.
 
-This means you can also create a release version of this application using grunt dist.
+This means you can also create a release version of this application using 
+
+```
+grunt dist
+```
 
 Once the web application is open in your browser you will have the option to load a dash board from
 an XML file. The testdash.xml file is a good example of what your file should look like.
