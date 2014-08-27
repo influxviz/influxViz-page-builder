@@ -82,8 +82,8 @@ Inside each row you may also have widgets!
 		<div>element4</div>
 	]]></html>
 	<function><![CDATA[
-		function (e) {
-			console.log(e + "<lelele>");
+		function (element) {
+			console.log(element);
 		}
 	]]></function>
 </widget>
