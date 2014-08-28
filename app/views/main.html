@@ -1,13 +1,12 @@
-<div class="dashboard-wrapper">
-  <div id="wrapper">
+<div id="wrapper" class="dashboard">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="navbar-header">
-        <span class="navbar-brand" style="cursor: pointer">Title:{{lele}}</span>
+        <span class="navbar-brand" style="cursor: pointer">Title: {{title}}</span>
       </div>
 
       <ul class="nav top-nav">
         <li>
-          <button type="button" class="navbar-toggle" ng-click="toggleSidebar()">
+          <button type="button" class="navbar-toggle" onclick="toggleSidebar()">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
@@ -31,9 +30,11 @@
           <hr/>
         </li>
 
-        <li>
-          <span class="menu-item">Random page</span>
-        </li>
+        <div class="dash-sidebar">
+          <li ng-repeat="page in pages">
+            <span class="menu-item dash-page-menu-item">{{page.title}}</span>
+          </li>
+        </div>
 
       </ul>
 
@@ -41,16 +42,11 @@
     <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
-    <div id="page-content-wrapper">
-      <div class="container-fluid dashboard">
-      </div>
+    <div id="page-content-wrapper" class="container-fluid page-container">
     </div>
     <!-- /#page-content-wrapper -->
-
-  </div>
-
-
 </div>
+<!-- dashboard-wrapper -->
 
 <div class="modal dialog-box fade" id="load-xml">
   <div class="container">

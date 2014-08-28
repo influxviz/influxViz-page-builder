@@ -14,9 +14,6 @@ angular.module('influxVizPageBuilderApp')
 	
 	this.loadExternalDashboardXML = function loadxml(XML) {
 		this.dashObject = DashXMLUtils.loadDashXML(XML);
-
-		//Remove this once gui works.
-		console.log(this.dashObject);
 	};
 
 	this.saveCurrentDashObject = function savexml() {

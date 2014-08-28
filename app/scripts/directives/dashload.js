@@ -21,6 +21,13 @@ angular.module('influxVizPageBuilderApp')
 						$("#load-xml").modal('hide');
 						return;
 					}
+
+					if(!(window.File && window.FileReader && window.FileList && window.Blob))
+					{
+						alert("Your browser does not support reading local files.");
+						return;
+					}
+
 					var reader = new FileReader();
 					reader.readAsText(file);
 					reader.onload = function() {

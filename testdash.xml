@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dashboard>
-	<page>
+<dashboard title="Test Dashboard">
+	<page title="Dash Page One">
 		<row col-type="col-lg" >
 			<widget cell-width="1" >
 				<html><![CDATA[
@@ -8,6 +8,202 @@
 					<div>element2</div>
 					<div>element3</div>
 					<div>element4</div>
+				]]></html>
+				<function><![CDATA[
+					function (element) {
+						console.log(element);
+					}
+				]]></function>
+			</widget>
+			<widget cell-width="1" >
+				<html><![CDATA[
+					<div>element5</div>
+					<div>element6</div>
+					<div>element7</div>
+					<div>element8</div>
+				]]></html>
+				<function><![CDATA[
+					function (element) {
+						console.log(element);
+					}
+				]]></function>
+			</widget>
+		</row>
+		<row col-type="col-lg" >
+			<widget cell-width="1" >
+				<html><![CDATA[
+					<div>element9</div>
+					<div>element10</div>
+					<div>element11</div>
+					<div>element12</div>
+				]]></html>
+				<function><![CDATA[
+					function (element) {
+						console.log(element);
+					}
+				]]></function>
+			</widget>
+			<widget cell-width="1" >
+				<html><![CDATA[
+					<div>element13</div>
+					<div>element14</div>
+					<div>element15</div>
+					<div>element16</div>
+				]]></html>
+				<function><![CDATA[
+					function (element) {
+						console.log(element);
+					}
+				]]></function>
+			</widget>
+			<widget cell-width="1" >
+				<html><![CDATA[
+					<div>element17</div>
+					<div>element18</div>
+					<div>element19</div>
+					<div>element20</div>
+				]]></html>
+				<function><![CDATA[
+					function (element) {
+						console.log(element);
+					}
+				]]></function>
+			</widget>
+		</row>
+	</page>
+	<page title="Dash Page One">
+		<row col-type="col-lg" >
+			<widget cell-width="1" >
+				<html><![CDATA[
+					<div>element21</div>
+					<div>element22</div>
+					<div>element23</div>
+					<div>element24</div>
+				]]></html>
+				<function><![CDATA[
+					function (element) {
+						console.log(element);
+					}
+				]]></function>
+			</widget>
+			<widget cell-width="1" >
+				<html><![CDATA[
+					<div>element25</div>
+					<div>element26</div>
+					<div>element27</div>
+					<div>element28</div>
+				]]></html>
+				<function><![CDATA[
+					function (element) {
+						console.log(element);
+					}
+				]]></function>
+			</widget>
+		</row>
+		<row col-type="col-lg" >
+			<widget cell-width="1" >
+				<html><![CDATA[
+					<div>element29</div>
+					<div>element30</div>
+					<div>element31</div>
+					<div>element32</div>
+				]]></html>
+				<function><![CDATA[
+					function (element) {
+						console.log(element);
+					}
+				]]></function>
+			</widget>
+			<widget cell-width="1" >
+				<html><![CDATA[
+					<div>element33</div>
+					<div>element34</div>
+					<div>element35</div>
+					<div>element36</div>
+				]]></html>
+				<function><![CDATA[
+					function (element) {
+						console.log(element);
+					}
+				]]></function>
+			</widget>
+			<widget cell-width="1" >
+				<html><![CDATA[
+					<div>element37</div>
+					<div>element38</div>
+					<div>element39</div>
+					<div>element40</div>
+				]]></html>
+				<function><![CDATA[
+					function (element) {
+						console.log(element);
+					}
+				]]></function>
+			</widget>
+		</row>
+	</page>
+	<page title="Dash Page One">
+		<row col-type="col-lg" >
+			<widget cell-width="1" >
+				<html><![CDATA[
+					<div>element41</div>
+					<div>element42</div>
+					<div>element43</div>
+					<div>element44</div>
+				]]></html>
+				<function><![CDATA[
+					function (element) {
+						console.log(element);
+					}
+				]]></function>
+			</widget>
+			<widget cell-width="1" >
+				<html><![CDATA[
+					<div>element45</div>
+					<div>element46</div>
+					<div>element47</div>
+					<div>element48</div>
+				]]></html>
+				<function><![CDATA[
+					function (element) {
+						console.log(element);
+					}
+				]]></function>
+			</widget>
+		</row>
+		<row col-type="col-lg" >
+			<widget cell-width="1" >
+				<html><![CDATA[
+					<div>element49</div>
+					<div>element50</div>
+					<div>element51</div>
+					<div>element52</div>
+				]]></html>
+				<function><![CDATA[
+					function (element) {
+						console.log(element);
+					}
+				]]></function>
+			</widget>
+			<widget cell-width="1" >
+				<html><![CDATA[
+					<div>element53</div>
+					<div>element54</div>
+					<div>element55</div>
+					<div>element56</div>
+				]]></html>
+				<function><![CDATA[
+					function (element) {
+						console.log(element);
+					}
+				]]></function>
+			</widget>
+			<widget cell-width="1" >
+				<html><![CDATA[
+					<div>element57</div>
+					<div>element58</div>
+					<div>element59</div>
+					<div>element60</div>
 				]]></html>
 				<function><![CDATA[
 					function (element) {

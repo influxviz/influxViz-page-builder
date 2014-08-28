@@ -33,92 +33,101 @@ angular.module('influxVizPageBuilderApp')
           };
           
           var dashObj = function gendashobj() {
-            var dom = xmlDOM().getElementsByTagName("dashboard")[0];
-            if(!dom){return new Object();}; //Return an empty non-dashboard object if there is no dom.
-
-            var obj =  new DashObject();
-            obj.title = dom.getAttribute("title");
-            obj.pages = [];
-            
-            var pages = dom.getElementsByTagName("page");
-
-            for(var i = 0; i < pages.length; i++)
+            try
             {
-              var DOMpage = pages[i];
+              var DOMdashboard = xmlDOM().getElementsByTagName("dashboard")[0];
+              if(!DOMdashboard){return new Object();}; //Return an empty non-dashboard object if there is no dom.
+
+              var obj =  new DashObject();
+              obj.title = DOMdashboard.getAttribute("title");
+              obj.pages = [];
               
-              function Page()
+              var pages = DOMdashboard.getElementsByTagName("page");
+              console.log(pages);
+              for(var i = 0; i < pages.length; i++)
               {
-                this.id = "dash-page-" + i
-                this.title = DOMpage.getAttribute("title");
-                this.rows = [];
-              }
-
-              var page = new Page()
-
-              var rows = DOMpage.getElementsByTagName("row");
-              for(var j = 0; j < rows.length; j++)
-              {
-                var DOMrow = rows[j];
+                var DOMpage = pages[i];
                 
-                function Row()
+                function Page()
                 {
-                  var col =  trim_(DOMrow.getAttribute("col-type"));
-                  this.columnType = (col) ? col : "col-lg";
-                  this.widgets = [];
+                  this.id = "dash-page-" + i
+                  this.title = DOMpage.getAttribute("title");
+                  this.rows = [];
                 }
-                
-                var row = new Row();
-                
-                var widgets = DOMrow.getElementsByTagName("widget");
-                for(var k = 0; k < widgets.length; k++)
+
+                var page = new Page()
+
+                var rows = DOMpage.getElementsByTagName("row");
+                for(var j = 0; j < rows.length; j++)
                 {
-                  var DOMwidget = widgets[k];
-
-                  function Widget()
+                  var DOMrow = rows[j];
+                  
+                  function Row()
                   {
-                    this.id = "widget-" + k + "-row-" + j + "-page-" + i;
+                    var col =  trim_(DOMrow.getAttribute("col-type"));
+                    this.columnType = (col) ? col : "col-lg";
+                    this.widgets = [];
+                  }
+                  
+                  var row = new Row();
+                  
+                  var widgets = DOMrow.getElementsByTagName("widget");
+                  for(var k = 0; k < widgets.length; k++)
+                  {
+                    var DOMwidget = widgets[k];
 
-                    var cellw =  trim_(DOMwidget.getAttribute("cell-width"));
-                    this.cellWidth = (cellw) ? cellw : "1";
-
-                    var html = DOMwidget.getElementsByTagName("html")[0].textContent;
-                    this.html = (html) ? html : "";
-
-                    var jsFunction = DOMwidget.getElementsByTagName("function")[0].textContent;
-                    jsFunction = trim_(jsFunction);
-                    jsFunction = jsFunction ? jsFunction : "";
-
-                    //Evaluate widget's function for errors and log errors on console.
-                    var jsfn;
-                    try
+                    function Widget()
                     {
-                      if(jsFunction)
+                      this.id = "widget-" + k + "-row-" + j + "-page-" + i;
+
+                      var cellw =  trim_(DOMwidget.getAttribute("cell-width"));
+                      this.cellWidth = (cellw) ? cellw : "1";
+
+                      var html = DOMwidget.getElementsByTagName("html")[0].textContent;
+                      this.html = (html) ? html : "";
+
+                      var jsFunction = DOMwidget.getElementsByTagName("function")[0].textContent;
+                      jsFunction = trim_(jsFunction);
+                      jsFunction = jsFunction ? jsFunction : "";
+
+                      //Evaluate widget's function for errors and log errors on console.
+                      var jsfn;
+                      try
                       {
-                        jsfn = eval('(' + jsFunction + ')');
+                        if(jsFunction)
+                        {
+                          jsfn = eval('(' + jsFunction + ')');
+                        }
+                        else
+                        {
+                          jsfn = function(){};
+                        }
                       }
-                      else
+                      catch(error)
                       {
                         jsfn = function(){};
+                        console.log("Error in " + this.id + " : \n\t" + error.message);
                       }
-                    }
-                    catch(error)
-                    {
-                      jsfn = function(){};
-                      console.log("Error in " + this.id + " : \n\t" + error.message);
+
+                      this.jsFunction = jsfn;
                     }
 
-                    this.jsFunction = jsfn;
+                    
+                    var widget = new Widget();
+                    row.widgets.push(widget);
                   }
-
-                  
-                  var widget = new Widget();
-                  row.widgets.push(widget);
+                  page.rows.push(row);
                 }
-                page.rows.push(row);
+                obj.pages.push(page);
               }
-              obj.pages.push(page);
             }
+            catch(error)
+            {
+              console.log(error);
+              alert("Invalid file.");
 
+              obj = {};
+            }
             //Return populated dashboard object.
             return obj;
           };
