@@ -26,8 +26,8 @@ The application uses Twitter Bootstrap's grid cell system to position each widge
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
-<dashboard>
-	<page>
+<dashboard title="dashboard title">
+	<page title="page title">
 		<row col-type="col-lg" >
 			<widget cell-width="1" >
 				<html><![CDATA[
@@ -47,17 +47,17 @@ The application uses Twitter Bootstrap's grid cell system to position each widge
 </dashboard>
 ```
 
-All dashboards contain a dashboard tag
+All dashboards contain a dashboard tag with a title attribute
 ```
-<dashboard>
+<dashboard title="dashboard title">
 	...
 </dashboard>
 
 ```
 
-Inside you may have some page tags
+Inside you may have some page tags where their titles show up as the text inside their menu button.
 ```
-<page>
+<page title="page title">
 	...
 </page>
 ```
